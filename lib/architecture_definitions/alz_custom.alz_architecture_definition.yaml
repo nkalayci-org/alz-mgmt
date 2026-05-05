@@ -1,0 +1,11 @@
+"archetype_definitions": {}
+"management_groups":
+- "display_name": "root"
+  "exists": true
+  "id": "root"
+  "name": "root"
+  "parent_id": null
+"metadata":
+  "description": "Empty starter module with minimal management groups"
+  "name": "empty"
+  "version": "1.0.0"
