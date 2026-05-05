@@ -22,7 +22,9 @@ terraform {
       version = "~> 3.5"
     }
   }
-  backend "azurerm" {}
+  backend "local" {
+    path = "terraform.tfstate"
+  }
 }
 
 
