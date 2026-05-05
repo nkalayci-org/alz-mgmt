@@ -74,3 +74,11 @@ provider "azurerm" {
 provider "azapi" {
   skip_provider_registration = true
 }
+
+provider "alz" {
+  library_references = [
+    {
+      custom_url = "${path.root}/lib"
+    }
+  ]
+}
