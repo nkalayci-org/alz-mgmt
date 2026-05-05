@@ -89,13 +89,6 @@ module "management_groups" {
         }
       }
     }
-    "identity" = {
-      "policy_assignments" = {
-        "Enforce-Sov-L2-HTTPS" = {
-          "identity" = "UserAssigned"
-        }
-      }
-    }
     "connectivity" = {
       "policy_assignments" = {
         "Enable-DDoS-VNET" = {
