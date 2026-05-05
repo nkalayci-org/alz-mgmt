@@ -1,0 +1,32 @@
+module.management_resources.data.modtm_module_source.telemetry[0]: Reading...
+module.management_groups.data.modtm_module_source.telemetry[0]: Reading...
+module.management_groups.data.modtm_module_source.telemetry[0]: Read complete after 0s
+module.management_resources.data.modtm_module_source.telemetry[0]: Read complete after 0s
+module.management_resources.data.azapi_client_config.current: Reading...
+module.management_groups.data.azapi_client_config.hierarchy_settings: Reading...
+module.management_groups.data.azapi_client_config.telemetry[0]: Reading...
+module.management_resources.data.azapi_client_config.telemetry[0]: Reading...
+data.azapi_client_config.current: Reading...
+data.azapi_client_config.current: Read complete after 4s [id=clientConfigs/subscriptionId=dc87e1e4-d2de-4c81-8c9d-e3b1e7f736b0;tenantId=d3951465-ee93-4c57-afe7-a91086f167fe]
+module.management_groups.data.azapi_client_config.hierarchy_settings: Read complete after 4s [id=clientConfigs/subscriptionId=dc87e1e4-d2de-4c81-8c9d-e3b1e7f736b0;tenantId=d3951465-ee93-4c57-afe7-a91086f167fe]
+module.management_resources.data.azapi_client_config.telemetry[0]: Read complete after 4s [id=clientConfigs/subscriptionId=dc87e1e4-d2de-4c81-8c9d-e3b1e7f736b0;tenantId=d3951465-ee93-4c57-afe7-a91086f167fe]
+module.management_groups.data.azapi_client_config.telemetry[0]: Read complete after 4s [id=clientConfigs/subscriptionId=dc87e1e4-d2de-4c81-8c9d-e3b1e7f736b0;tenantId=d3951465-ee93-4c57-afe7-a91086f167fe]
+module.management_resources.data.azapi_client_config.current: Read complete after 4s [id=clientConfigs/subscriptionId=dc87e1e4-d2de-4c81-8c9d-e3b1e7f736b0;tenantId=d3951465-ee93-4c57-afe7-a91086f167fe]
+module.management_groups.data.alz_metadata.telemetry[0]: Reading...
+module.management_groups.data.alz_metadata.telemetry[0]: Read complete after 0s [id=c5c5babc-7412-5e27-ed87-cb946ba9bdc9]
+module.management_groups.data.alz_architecture.this: Reading...
+module.management_groups.data.alz_architecture.this: Still reading... [00m10s elapsed]
+module.management_groups.data.alz_architecture.this: Still reading... [00m20s elapsed]
+module.management_groups.data.alz_architecture.this: Still reading... [00m30s elapsed]
+module.management_groups.data.alz_architecture.this: Still reading... [00m40s elapsed]
+module.management_groups.data.alz_architecture.this: Still reading... [00m50s elapsed]
+module.management_groups.data.alz_architecture.this: Still reading... [01m00s elapsed]
+module.management_groups.data.alz_architecture.this: Still reading... [01m10s elapsed]
+module.management_groups.data.alz_architecture.this: Still reading... [01m20s elapsed]
+module.management_groups.data.alz_architecture.this: Still reading... [01m30s elapsed]
+module.management_groups.data.alz_architecture.this: Still reading... [01m40s elapsed]
+module.management_groups.data.alz_architecture.this: Still reading... [01m50s elapsed]
+module.management_groups.data.alz_architecture.this: Still reading... [02m00s elapsed]
+module.management_groups.data.alz_architecture.this: Still reading... [02m10s elapsed]
+module.management_groups.data.alz_architecture.this: Still reading... [02m20s elapsed]
+module.management_groups.data.alz_architecture.this: Still reading... [02m30s elapsed]
