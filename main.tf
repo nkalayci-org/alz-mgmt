@@ -92,12 +92,7 @@ module "management_groups" {
     "identity" = {
       "policy_assignments" = {
         "Enforce-Sov-L2-HTTPS" = {
-          "identity" = jsonencode({
-            type = "UserAssigned"
-            userAssignedIdentities = {
-              (local.ama_user_assigned_managed_identity_id) = {}
-            }
-          })
+          "identity" = "UserAssigned"
         }
       }
     }
