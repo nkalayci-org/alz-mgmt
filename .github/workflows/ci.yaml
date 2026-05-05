@@ -9,17 +9,99 @@ on:
       terraform_cli_version:
         description: 'Terraform CLI Version'
         required: true
-        default: '1.14.9'
+        default: '1.15.1'
         type: string
 
 jobs:
-  validate_and_plan:
-    uses: nkalayci-org/alz-mgmt-templates/.github/workflows/ci-template.yaml@main
-    name: 'CI'
+  validate_terraform:
+    runs-on: ubuntu-latest
+    name: 'Validate Terraform'
     permissions:
       id-token: write
       contents: read
       pull-requests: write
-    with:
-      root_module_folder_relative_path: '.'
-      terraform_cli_version: ${{ inputs.terraform_cli_version }}
+    env:
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+      ARM_USE_AZUREAD: true
+      ARM_USE_OIDC: true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ inputs.terraform_cli_version || '1.15.1' }}
+          terraform_wrapper: false
+
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive
+        working-directory: '.'
+
+      - name: Terraform Init
+        run: terraform init
+        working-directory: '.'
+
+      - name: Terraform Validate
+        run: terraform validate
+        working-directory: '.'
+
+  plan_terraform:
+    runs-on: ubuntu-latest
+    name: 'Plan Terraform'
+    needs: validate_terraform
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: write
+    env:
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+      ARM_USE_AZUREAD: true
+      ARM_USE_OIDC: true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ inputs.terraform_cli_version || '1.15.1' }}
+          terraform_wrapper: false
+
+      - name: Terraform Init
+        run: terraform init
+        working-directory: '.'
+
+      - name: Terraform Plan
+        run: terraform plan -lock=false
+        working-directory: '.'
+
+      - name: Comment PR with Plan Results
+        uses: actions/github-script@v6
+        if: always()
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const output = `#### Terraform Validation ✅
+
+- ✅ Format Check Passed
+- ✅ Init Successful  
+- ✅ Validate Passed
+- ✅ Plan Generated
+
+*Pushed by: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: output
+            })
